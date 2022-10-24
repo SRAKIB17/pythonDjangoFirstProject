@@ -35,11 +35,11 @@ def add(request):
 
 def add_record(request):
     try:
-        print(request.POST)
+        print(request.POST["first"])
         x = request.POST['first']
         y = request.POST['last']
-        # member = Members(firstname=x, lastname=y)
-        # member.save()
+        member = Members(firstname=x, lastname=y)
+        member.save()
         return HttpResponseRedirect(reverse('index'))
 
     except:
