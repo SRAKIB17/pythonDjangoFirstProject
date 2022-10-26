@@ -1,12 +1,17 @@
-<h1>Add member</h1>
+<!DOCTYPE html>
+<html>
+  <body>
+    {% regroup cars by brand as newlist %}
 
-<form action="add_record/" method="post">
-  {% csrf_token %}
-  First Name:<br />
-  <input name="first" />
-  <br /><br />
-  Last Name:<br />
-  <input name="last" />
-  <br /><br />
-  <input type="submit" value="Submit" />
-</form>
+    {{ newlist }}
+
+    {% for x in newlist %}
+      <h1>{{ x.grouper }}</h1>
+      {% for y in x.list %}
+        <p>{{ y.model }}: {{ y.year }}</p>
+      {% endfor %}
+    {% endfor %}
+
+    <p>Check out views.py to see what the cars list looks like.</p>
+  </body>
+</html>

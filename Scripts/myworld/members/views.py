@@ -95,8 +95,10 @@ def update_record(request, id):
 
 def template_test(request):
     # my_members = Members.objects.all().values()
+
     context = {
         'fruits': ['Apple', 'Banana', 'Cherry', 'Orange']
     }
+
     template = loader.get_template('template.html')
     return HttpResponse(template.render(context, request))
